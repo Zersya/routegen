@@ -38,9 +38,10 @@ class RoutesGenerator extends GeneratorForAnnotation<Routes> {
 
     var classBuffer = StringBuffer();
 
-    for (Config dt in listConfig){
-      classBuffer.writeln("import 'package:test_simak/modules/${dt.route}/${dt.route}_screen.dart';");
-    }
+    // Trying to import lib    // //   ¯\_(ツ)_/¯ \\ \\
+    // for (Config dt in listConfig){
+    //   classBuffer.writeln("import 'package:test_simak/modules/${dt.route}/${dt.route}_screen.dart';");
+    // }
 
     classBuffer.writeln("final routesHandlers = [");
 

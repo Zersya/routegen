@@ -1,5 +1,3 @@
-
-
 class Config {
   String name;
   String route;

@@ -46,9 +46,9 @@ class RoutesGenerator extends GeneratorForAnnotation<Routes> {
 
     for (Config dt in listConfig){
       classBuffer.writeln("Routes(name: '${dt.name}', handler:Handler(");
-      classBuffer.writeln(
-          "\t\thandlerFunc: (BuildContext context, Map<String, List<String>> params) "
-              "{\n\t\t\treturn ${dt.classDt}();\n\t\t},\n\t),\n\t),\n");
+      classBuffer.writeln("handlerFunc: (BuildContext context, Map<String, List<String>> params) =>");
+      classBuffer.writeln("${dt.classDt}()");
+      classBuffer.writeln(",),),");
     }
     classBuffer.writeln("];");
 

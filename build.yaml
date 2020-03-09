@@ -1,0 +1,15 @@
+targets:
+  $default:
+    builders:
+      routgen_generator|routgen:
+        enabled: true
+
+builders:
+  routgen:
+    target: ":routgen_generator"
+    import: "package:routgen_generator/builder.dart"
+    builder_factories: ["routgen"]
+    build_extensions: {".dart": [".routgen.g.part"]}
+    auto_apply: dependents
+    build_to: cache
+    applies_builders: ["source_gen|combining_builder"]

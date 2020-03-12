@@ -6,7 +6,7 @@ import 'package:dart_style/dart_style.dart';
 import 'package:build/build.dart';
 import 'package:path/path.dart' as p;
 
-import 'model.dart';
+import '../model.dart';
 
 class RoutesGenerator implements Builder {
   const RoutesGenerator();
@@ -21,7 +21,7 @@ class RoutesGenerator implements Builder {
     classBuffer.write("""
           import 'package:fluro/fluro.dart';
           import 'package:flutter/material.dart';
-          import 'package:routgen_generator/src/model.dart';""");
+          import 'package:routgen_generator/model.dart';""");
 
     for (Config dt in listConfig) {
       classBuffer.writeln(

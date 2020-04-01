@@ -23,18 +23,18 @@ class RoutesGenerator implements Builder {
           import 'package:flutter/material.dart';
           import 'package:routgen_generator/model.dart';""");
 
-    for (Routes route in config.routes) {
+    for (Modules module in config.modules) {
       classBuffer.writeln(
-          "import 'package:${config.app_name}/modules/${route.route}/${route.route}_screen.dart';");
+          "import 'package:${config.appName}/modules/${module.route}/${module.route}_screen.dart';");
     }
 
     classBuffer.writeln("final routesHandlers = [");
 
-    for (Routes route in config.routes) {
-      classBuffer.writeln("Routes(name: '${route.name}', handler:Handler(");
+    for (Modules module in config.modules) {
+      classBuffer.writeln("Routes(name: '${module.name}', handler:Handler(");
       classBuffer.writeln(
           "handlerFunc: (BuildContext context, Map<String, List<String>> params) =>");
-      classBuffer.writeln("${route.classDt}()");
+      classBuffer.writeln("${module.className}()");
       classBuffer.writeln(",),),");
     }
     classBuffer.writeln("];");

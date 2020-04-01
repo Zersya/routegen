@@ -4,9 +4,9 @@ class Config {
 	String schoolName;
 	String logoSchoolUrl;
 	String baseUrl;
-	List<Routes> routes;
+	List<Modules> modules;
 
-	Config({this.appName, this.packageName, this.schoolName, this.logoSchoolUrl, this.baseUrl, this.routes});
+	Config({this.appName, this.packageName, this.schoolName, this.logoSchoolUrl, this.baseUrl, this.modules});
 
 	Config.fromJson(Map<String, dynamic> json) {
 		appName = json['app_name'];
@@ -14,9 +14,9 @@ class Config {
 		schoolName = json['school_name'];
 		logoSchoolUrl = json['logo_school_url'];
 		baseUrl = json['base_url'];
-		if (json['routes'] != null) {
-			routes = new List<Routes>();
-			json['routes'].forEach((v) { routes.add(new Routes.fromJson(v)); });
+		if (json['modules'] != null) {
+			modules = new List<Modules>();
+			json['modules'].forEach((v) { modules.add(new Modules.fromJson(v)); });
 		}
 	}
 
@@ -27,22 +27,22 @@ class Config {
 		data['school_name'] = this.schoolName;
 		data['logo_school_url'] = this.logoSchoolUrl;
 		data['base_url'] = this.baseUrl;
-		if (this.routes != null) {
-      data['routes'] = this.routes.map((v) => v.toJson()).toList();
+		if (this.modules != null) {
+      data['modules'] = this.modules.map((v) => v.toJson()).toList();
     }
 		return data;
 	}
 }
 
-class Routes {
+class Modules {
 	String name;
 	String route;
 	String className;
 	String iconUrl;
 
-	Routes({this.name, this.route, this.className, this.iconUrl});
+	Modules({this.name, this.route, this.className, this.iconUrl});
 
-	Routes.fromJson(Map<String, dynamic> json) {
+	Modules.fromJson(Map<String, dynamic> json) {
 		name = json['name'];
 		route = json['route'];
 		className = json['class_name'];
@@ -57,4 +57,11 @@ class Routes {
 		data['icon_url'] = this.iconUrl;
 		return data;
 	}
+}
+
+class Routes<T> {
+  final String name;
+  final T handler;
+
+  Routes({this.name, this.handler}) : assert(name != null);
 }

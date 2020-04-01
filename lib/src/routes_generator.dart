@@ -13,7 +13,7 @@ class RoutesGenerator implements Builder {
 
   @override
   FutureOr<void> build(BuildStep buildStep) async {
-    final listConfig = _loadData();
+    final Config config = _loadData();
     
     var classBuffer = StringBuffer();
 
@@ -23,18 +23,18 @@ class RoutesGenerator implements Builder {
           import 'package:flutter/material.dart';
           import 'package:routgen_generator/model.dart';""");
 
-    for (Config dt in listConfig) {
+    for (Routes route in config.routes) {
       classBuffer.writeln(
-          "import 'package:test_simak/modules/${dt.route}/${dt.route}_screen.dart';");
+          "import 'package:${config.app_name}/modules/${route.route}/${route.route}_screen.dart';");
     }
 
     classBuffer.writeln("final routesHandlers = [");
 
-    for (Config dt in listConfig) {
-      classBuffer.writeln("Routes(name: '${dt.name}', handler:Handler(");
+    for (Routes route in config.routes) {
+      classBuffer.writeln("Routes(name: '${route.name}', handler:Handler(");
       classBuffer.writeln(
           "handlerFunc: (BuildContext context, Map<String, List<String>> params) =>");
-      classBuffer.writeln("${dt.classDt}()");
+      classBuffer.writeln("${route.classDt}()");
       classBuffer.writeln(",),),");
     }
     classBuffer.writeln("];");
@@ -56,9 +56,7 @@ class RoutesGenerator implements Builder {
     final file = File(jsonPath);
 
     final jsonStr = file.readAsStringSync();
-    final List listData = json.decode(jsonStr);
-    List<Config> listConfig =
-        listData.map((val) => Config.fromJson(val)).toList();
-    return listConfig;
+    Config config = Config.fromJson(json.decode(jsonStr));
+    return config;
   }
 }

@@ -61,7 +61,8 @@ class Modules {
 
 class Routes<T> {
   final String name;
+  final String route;
   final T handler;
 
-  Routes({this.name, this.handler}) : assert(name != null);
+  Routes({this.name, this.handler, this.route}) : assert(name != null);
 }

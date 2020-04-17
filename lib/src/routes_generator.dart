@@ -39,7 +39,7 @@ class RoutesGenerator implements Builder {
     }
     classBuffer.writeln("];");
 
-    final file = File('lib/config/routes_handler.dart');
+    final file = File('lib/config/routes_handler.g.dart');
     String outputString =
         DartFormatter().format(classBuffer.toString()).toString();
 

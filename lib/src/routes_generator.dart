@@ -14,7 +14,7 @@ class RoutesGenerator implements Builder {
   @override
   FutureOr<void> build(BuildStep buildStep) async {
     final Config config = _loadData();
-    
+
     var classBuffer = StringBuffer();
 
     // Trying to import lib    // //   ¯\_(ツ)_/¯ \\ \\
@@ -31,7 +31,7 @@ class RoutesGenerator implements Builder {
     classBuffer.writeln("final routesHandlers = [");
 
     for (Modules module in config.modules) {
-      classBuffer.writeln("Routes(name: '${module.name}', handler:Handler(");
+      classBuffer.writeln("Routes(name: '${module.nameEn}', handler:Handler(");
       classBuffer.writeln(
           "handlerFunc: (BuildContext context, Map<String, List<String>> params) =>");
       classBuffer.writeln("${module.className}()");

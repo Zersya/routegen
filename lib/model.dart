@@ -5,6 +5,7 @@ class Config {
   String logoSchoolUrl;
   String baseUrl;
   String clientId;
+  String schoolId;
   List<Modules> modules;
 
   Config(
@@ -14,6 +15,7 @@ class Config {
       this.logoSchoolUrl,
       this.baseUrl,
       this.clientId,
+      this.schoolId,
       this.modules});
 
   Config.fromJson(Map<String, dynamic> json) {
@@ -23,6 +25,7 @@ class Config {
     logoSchoolUrl = json['logo_school_url'];
     baseUrl = json['base_url'];
     clientId = json['client_id'];
+    schoolId = json['school_id'];
     if (json['modules'] != null) {
       modules = new List<Modules>();
       json['modules'].forEach((v) {
@@ -39,6 +42,7 @@ class Config {
     data['logo_school_url'] = this.logoSchoolUrl;
     data['base_url'] = this.baseUrl;
     data['client_id'] = this.clientId;
+    data['school_id'] = this.schoolId;
     if (this.modules != null) {
       data['modules'] = this.modules.map((v) => v.toJson()).toList();
     }

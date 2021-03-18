@@ -53,15 +53,17 @@ class Config {
 class Modules {
   String nameId;
   String nameEn;
+  String category;
   String route;
   String className;
   String iconUrl;
 
-  Modules({this.nameId, this.nameEn, this.route, this.className, this.iconUrl});
+  Modules({this.nameId, this.nameEn, this.category, this.route, this.className, this.iconUrl});
 
   Modules.fromJson(Map<String, dynamic> json) {
     nameId = json['name_id'];
     nameEn = json['name_en'];
+    category = json['category'];
     route = json['route'];
     className = json['class_name'];
     iconUrl = json['icon_url'];
@@ -71,6 +73,7 @@ class Modules {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['name_id'] = this.nameId;
     data['name_en'] = this.nameEn;
+    data['category'] = this.category;
     data['route'] = this.route;
     data['class_name'] = this.className;
     data['icon_url'] = this.iconUrl;

@@ -55,17 +55,21 @@ class Modules {
   String nameEn;
   String categoryId;
   String categoryEn;
+  String descriptionId;
+  String descriptionEn;
   String route;
   String className;
   String iconUrl;
 
-  Modules({this.nameId, this.nameEn, this.categoryId, this.categoryEn, this.route, this.className, this.iconUrl});
+  Modules({this.nameId, this.nameEn, this.categoryId, this.categoryEn, this.descriptionId, this.descriptionEn, this.route, this.className, this.iconUrl});
 
   Modules.fromJson(Map<String, dynamic> json) {
     nameId = json['name_id'];
     nameEn = json['name_en'];
     categoryId = json['category_id'];
     categoryEn = json['category_en'];
+    descriptionId = json['description_id'];
+    descriptionEn = json['description_en'];
     route = json['route'];
     className = json['class_name'];
     iconUrl = json['icon_url'];
@@ -77,6 +81,8 @@ class Modules {
     data['name_en'] = this.nameEn;
     data['category_id'] = this.categoryId;
     data['category_en'] = this.categoryEn;
+    data['description_id'] = this.descriptionId;
+    data['description_en'] = this.descriptionEn;
     data['route'] = this.route;
     data['class_name'] = this.className;
     data['icon_url'] = this.iconUrl;

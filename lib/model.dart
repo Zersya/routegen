@@ -1,12 +1,12 @@
 class Config {
-  String appName;
-  String packageName;
-  String schoolName;
-  String logoSchoolUrl;
-  String baseUrl;
-  String clientId;
-  String schoolId;
-  List<Modules> modules;
+  String? appName;
+  String? packageName;
+  String? schoolName;
+  String? logoSchoolUrl;
+  String? baseUrl;
+  String? clientId;
+  String? schoolId;
+  List<Modules>? modules;
 
   Config(
       {this.appName,
@@ -27,15 +27,15 @@ class Config {
     clientId = json['client_id'];
     schoolId = json['school_id'];
     if (json['modules'] != null) {
-      modules = new List<Modules>();
+      modules =  [];
       json['modules'].forEach((v) {
-        modules.add(new Modules.fromJson(v));
+        modules!.add(Modules.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['app_name'] = this.appName;
     data['package_name'] = this.packageName;
     data['school_name'] = this.schoolName;
@@ -44,22 +44,22 @@ class Config {
     data['client_id'] = this.clientId;
     data['school_id'] = this.schoolId;
     if (this.modules != null) {
-      data['modules'] = this.modules.map((v) => v.toJson()).toList();
+      data['modules'] = this.modules!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
 class Modules {
-  String nameId;
-  String nameEn;
-  String categoryId;
-  String categoryEn;
-  String descriptionId;
-  String descriptionEn;
-  String route;
-  String className;
-  String iconUrl;
+  String? nameId;
+  String? nameEn;
+  String? categoryId;
+  String? categoryEn;
+  String? descriptionId;
+  String? descriptionEn;
+  String? route;
+  String? className;
+  String? iconUrl;
 
   Modules({this.nameId, this.nameEn, this.categoryId, this.categoryEn, this.descriptionId, this.descriptionEn, this.route, this.className, this.iconUrl});
 
@@ -76,7 +76,7 @@ class Modules {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['name_id'] = this.nameId;
     data['name_en'] = this.nameEn;
     data['category_id'] = this.categoryId;
@@ -92,8 +92,8 @@ class Modules {
 
 class Routes<T> {
   final String name;
-  final String route;
-  final T handler;
+  final String? route;
+  final T? handler;
 
-  Routes({this.name, this.handler, this.route}) : assert(name != null);
+  Routes({required this.name, this.handler, this.route}) : assert(name != null);
 }
